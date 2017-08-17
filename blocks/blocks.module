@@ -1,0 +1,51 @@
+<?php
+/**
+ * @file
+ * Code for blocks module
+ */
+
+
+function render_blocks($bid) {
+
+	$bid_block =  $bid;
+	$block_custom = \Drupal\block\Entity\Block::load($bid_block);
+	$render_block = \Drupal::entityTypeManager()
+        ->getViewBuilder('block')
+        ->view($block_custom);
+
+    return $render_block;
+
+}
+
+
+function blocks_theme($existing, $type, $theme, $path) {
+
+	return array(
+
+	    /* PRODUITS CONNEXES PRODUIT */
+	    'node__produit' => array(
+	      	'variables' => array(
+	      		'render_produits_connexes_block' => render_blocks('produitsconnexesproduit'),
+	      	),
+	    ),
+
+	    /* PRODUITS DESIGNER */
+	    'node__designer' => array(
+	      	'variables' => array(
+	      		'render_produits_designer_block' => render_blocks('produitsdesigner'),
+	      		'render_pagination_designer_block' => render_blocks('paginationdesigner'),
+	      	),
+	    ),
+
+	    /* ARTICLES CONNEXES */
+	    'node__article' => array(
+	      	'variables' => array(
+	      		'render_articles_connexes_block' => render_blocks('articlesconnexesblock'),
+	      	),
+	    ),
+ 
+	   
+
+	);
+
+}

@@ -1,0 +1,17 @@
+ 
+services:
+  TwigExtensions.twig_extension:
+    class: Drupal\TwigFilter\TwigExtensions
+    tags:
+      - { name: twig.extension }
+
+  Images.twig_extension:
+    class: Drupal\TwigFilter\Images
+    tags:
+      - { name: twig.extension }   
+
+  # LoadNode.twig_extension:
+  #   class: Drupal\TwigFilter\LoadNode
+  #   tags:
+  #     - { name: twig.extension }         
+      

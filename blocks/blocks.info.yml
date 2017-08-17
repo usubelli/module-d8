@@ -1,0 +1,8 @@
+name: blocks
+description: Studio Gazoline module for blocks
+type: module
+version: 0.2
+core: 8.x
+dependencies:
+  - node
+  - block

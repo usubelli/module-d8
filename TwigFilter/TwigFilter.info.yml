@@ -1,0 +1,5 @@
+name: TwigFilter
+type: module
+description: Twig Filter Gazoline
+core: 8.x
+version: '8.x-1.0-beta1'

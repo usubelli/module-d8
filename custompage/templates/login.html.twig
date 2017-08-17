@@ -1,0 +1,49 @@
+ 
+
+ 
+<div class="container acces-login margin-bottom-60">
+	
+ 	<!-- TITLE -->
+        <h2 class="color-dark-grey titre-section txt-center montserrat margin-bottom-30">
+            <span>Connexion</span> 
+        </h2>   
+		<div class="col-xs-12 color-grey-light monserrat txt-center" style="color:#999">
+			<p>Merci de bien vouloir vous identifier ou créer un compte pour accéder à cette fonctionnalité.</p>
+		</div>
+ 	<!-- / TITLE -->
+
+ 	<div class="row">
+		<!-- LOGIN -->
+			<div class="col-xs-12 col-md-6 wrapp-form margin-top-45">
+				<div class="login">
+				<p class="txt-left bold uppercase color-black size-4 margin-bottom-15 montserrat"><strong>S'identifier</strong></p>
+	 				{{ user_login_form }}
+	 			</div>  
+	 		</div>  
+		<!-- / LOGIN -->
+
+
+		<!-- CREATE ACCOUNT -->
+			<div class="col-xs-12 col-md-6 wrapp-form margin-top-45">
+				<div class="login">
+				<p class="txt-left bold uppercase color-black size-4 margin-bottom-15 montserrat"><strong>Créer un compte</strong></p>
+	 				{{ register_form }}   
+	 			</div>  
+	 		</div>  
+		<!-- / CREATE ACCOUNT -->
+ 	</div>  
+
+<script type="text/javascript">
+	jQuery(document).ready(function(){
+		$('#edit-name').attr('placeholder', 'Nom d\'utilisateur *');
+		$('#edit-pass').attr('placeholder', 'Mot de passe *');
+		$('#edit-mail').attr('placeholder', 'Adresse de courriel *');
+		$('#edit-name--2').attr('placeholder', 'Nom d\'utilisateur *');
+		$('#edit-pass-pass1').attr('placeholder', 'Mot de passe *');
+		$('#edit-pass-pass2').attr('placeholder', 'Confirmer le mot de passe *'); 
+		$('#edit-field-nom-user-0-value').attr('placeholder', 'Nom *'); 
+		$('#edit-field-prenom-user-0-value').attr('placeholder', 'Prénom *'); 
+	})
+</script>
+
+ 	

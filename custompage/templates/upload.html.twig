@@ -1,0 +1,51 @@
+<section class="upload" style="margin-top:40px;">
+    <div class="container">
+
+        <p style="margin-bottom:15px;"><strong>Veuillez sélectionner votre Fichier CSV à importer pour la création des fiches produits.</strong></p>
+
+        <form id="uploadcsv" enctype="multipart/form-data" method="post"  >
+            <input id="fileupload" name="myfile" type="file" accept=".csv" style="border:1px solid #ccc; padding:10px;"/>
+            <input class="button js-form-submit form-submit" type="submit" value="submit" id="submit" />
+        </form> 
+
+    </div>
+</section>		
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript">
+ 
+    
+    $(document).ready(function(){
+    
+        $('#uploadcsv').submit( function(e) {
+            e.preventDefault();
+            console.log('fr');
+           
+
+            $.ajax({
+                url: '/ajax/get-csv',
+                type: 'POST',
+                data: new FormData(this),
+                processData: false,
+                contentType: false,
+                beforeSend: function(){
+                    $('.loader').fadeIn();
+                } 
+            }) 
+            .done(function() {
+                console.log("success");  
+            })
+            .fail(function() {
+                console.log("error");
+            })
+            .always(function(data) {
+                console.log("Cool"); 
+            });
+        });
+    });
+</script>
+
+
+

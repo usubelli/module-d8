@@ -1,0 +1,57 @@
+<?php
+/**
+ * @file
+ * Code for custompage module
+ */
+
+
+function custompage_theme($existing, $type, $theme, $path) {
+
+	return array(
+		// Déclaration des variables à utiliser dans le template produits
+		'produits' => array(
+		    'variables' => array(
+		    	'listProduits' => NULL, 
+		    	'filterListFamille' => NULL, 
+		    	'filterListCollection' => NULL, 
+		    	'filterListMateriaux' => NULL,  
+		    ),
+	    ),	
+	    'realisations' => array(
+		    'variables' => array(
+		    	'listProduits' => NULL,  
+		    ),
+	    ),	 
+	    'revendeurs' => array(
+		    'variables' => array(
+		    	'revendeursList' => NULL,  
+		    	'mapList' => NULL,  
+		    	// 'mapDepartement' => NULL,  
+		    	'colorDept' => NULL,  
+		    	'nameRevendeur' => NULL,  
+		    ),
+	    ),
+	    'favoris' => array(
+		    'variables' => array(
+	      		'produit_favoris' => NULL,
+		    ),
+	    ),	
+	    'messagerie' => array(
+		    'variables' => array( 
+		    	'thread_message' => NULL,
+		    ),
+	    ),	
+	    'login' => array(
+		    'variables' => array(
+		    	'user_login_form' => NULL,
+		    	'register_form' => NULL,
+		    ),
+	    ),	
+	    'upload' => array(
+		    'variables' => array(
+		    ),
+	    ),	 		 
+
+	);
+	
+}

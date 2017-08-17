@@ -1,0 +1,9 @@
+name: custompage
+description: Studio Gazoline module for custom page
+package: Studio Gazoline
+type: module
+version: 0.2
+core: 8.x
+dependencies:
+  - node
+  - block

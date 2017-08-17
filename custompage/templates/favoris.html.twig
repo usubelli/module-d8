@@ -1,0 +1,22 @@
+<section class="favoris">
+    <div class="container">
+
+        <a href="/user" class="back-btn user"><i class="fa fa-angle-left" aria-hidden="true"></i> Retour</a>
+        
+        {% set nodes_infos = loadNode(9) %}
+        <h2 class="color-dark-grey titre-section txt-center montserrat margin-bottom-30  no-block">
+            {{ nodes_infos.field_titre_h1_favoris.value|raw |replaceTags() }}
+             
+        </h2>   
+		
+		<div class="list-el margin-top-60 margin-bottom-60">
+            {% if produit_favoris %}
+        	   {{ produit_favoris | raw }}
+            {% else %}
+                <p class="color-light-grey txt-center">Aucun favoris ...</p>
+            {% endif  %}
+		</div>
+        
+    </div>
+</section>		
+

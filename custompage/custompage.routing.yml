@@ -1,0 +1,138 @@
+# PRODUITS
+produits.content:
+  path: '/les-collections'
+  defaults:
+    _controller: '\Drupal\custompage\Controller\produitsController::content'
+    _title: 'Les collections'
+  requirements:
+    _permission: 'access content'
+
+# AJAX GET PRODUCT
+getProduits.content:
+  path: '/ajax/getproduits'
+  defaults:
+    _controller: '\Drupal\custompage\Controller\produitsController::getProduits'
+    _title: 'getProduits'
+  requirements:
+    _permission: 'access content'
+
+# AJAX SEARCH PRODUCT
+searchProduits.content:
+  path: '/ajax/searchproduits'
+  defaults:
+    _controller: '\Drupal\custompage\Controller\produitsController::searchProduits'
+    _title: 'searchProduits'
+  requirements:
+    _permission: 'access content'    
+
+
+
+
+
+# REALISATIONS
+realisations.content:
+  path: '/nos-realisations'
+  defaults:
+    _controller: '\Drupal\custompage\Controller\realisationsController::content'
+    _title: 'Nos réalisations'
+  requirements:
+    _permission: 'access content'
+
+# AJAX GET REALISATIONS
+getRealisations.content:
+  path: '/ajax/getrealisations'
+  defaults:
+    _controller: '\Drupal\custompage\Controller\realisationsController::getRealisations'
+    _title: 'get Realisations'
+  requirements:
+    _permission: 'access content'
+
+# AJAX SEARCH PRODUCT
+searchRealisations.content:
+  path: '/ajax/search-realisation'
+  defaults:
+    _controller: '\Drupal\custompage\Controller\realisationsController::searchRealisations'
+    _title: 'searchRealisations'
+  requirements:
+    _permission: 'access content'   
+
+
+# REVENDEURS
+revendeurs.content:
+  path: '/revendeurs'
+  defaults:
+    _controller: '\Drupal\custompage\Controller\revendeursController::content'
+    _title: 'Revendeurs'
+  requirements:
+    _permission: 'access content'
+
+
+
+
+
+# USERLOGIN
+login.content:
+  path: '/user-login'
+  defaults:
+    _controller: '\Drupal\custompage\Controller\loginController::content'
+    _title: 'User login'
+  requirements:
+    _permission: 'access content'
+
+ # MESSAGERIE
+messagerie.content:
+  path: '/messagerie'
+  defaults:
+    _controller: '\Drupal\custompage\Controller\messagerieController::content'
+    _title: 'Messagerie'
+  requirements:
+    _permission: 'post comments'
+ 
+# FAVORIS
+favoris.content:
+  path: '/favoris'
+  defaults:
+    _controller: '\Drupal\custompage\Controller\favorisController::content'
+    _title: 'Favoris'
+  requirements:
+    _permission: 'post comments'
+
+#Add Liked
+addLiked.content:
+  path: '/ajax/addLiked'
+  defaults:
+    _controller: '\Drupal\custompage\Controller\favorisController::addLiked'
+    _title: 'addLiked'
+  requirements:
+    _permission: 'post comments'
+
+#Remove Liked
+removeLiked.content:
+  path: '/ajax/removeLiked'
+  defaults:
+    _controller: '\Drupal\custompage\Controller\favorisController::removeLiked'
+    _title: 'removeLiked'
+  requirements:
+    _permission: 'post comments'
+
+
+
+# UPLOAD CSV
+upload.content:
+  path: '/admin/upload-csv'
+  defaults:
+    _controller: '\Drupal\custompage\Controller\importCsvController::content'
+    _title: 'Upload CSV'
+  requirements:
+    _permission: 'post comments'
+
+# AJAX IMPORT CSV
+import.content:
+  path: '/ajax/get-csv'
+  defaults:
+    _controller: '\Drupal\custompage\Controller\importCsvController::getCsv'
+    _title: 'Import CSV'
+  requirements:
+    _permission: 'post comments'    
+
+ 

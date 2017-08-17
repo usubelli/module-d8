@@ -1,0 +1,149 @@
+ 
+
+<!-- REALISATIONS -->
+<section class="produits">
+    <div class="container">
+        {% set nodes_infos = loadNode(9) %}
+        <h1 class="color-dark-grey titre-section txt-center montserrat margin-bottom-30  no-block">
+            {{ nodes_infos.field_titre_h2_realisations.value|raw |replaceTags() }}
+            <span class="cat"></span>
+        </h1>  
+    </div>
+ 
+    <div class="margin-top-30 margin-bottom-60">
+        <div class="realisations">
+
+            <div class="loader loader--style3" title="2">
+                <svg version="1.1" id="loader-1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                     width="60px" height="60px" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;" xml:space="preserve">
+                    <path fill="#000" d="M43.935,25.145c0-10.318-8.364-18.683-18.683-18.683c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615c8.072,0,14.615,6.543,14.615,14.615H43.935z">
+                    <animateTransform attributeType="xml"
+                      attributeName="transform"
+                      type="rotate"
+                      from="0 25 25"
+                      to="360 25 25"
+                      dur="0.6s"
+                      repeatCount="indefinite"/>
+                    </path>
+                </svg>
+            </div>
+
+            <div class="list list-product row margin-top-45">
+                
+            </div>
+        </div>
+    </div>
+
+    </div>
+    <div class="container produit-pagination">
+         
+    </div>
+</section>
+<!-- / REALISATIONS -->
+
+
+<script type="text/javascript">
+    var $ = jQuery;
+    
+    $(document).ready(function(){
+        
+        function AjaxProduct(range = null, search = null, index = null){
+
+            var range = range;
+            var search = search;
+            var index = index;
+
+            $.ajax({
+                url: 'ajax/getrealisations',
+                type: 'POST',
+                dataType: 'json',
+                data: { range: range, index: index},
+                beforeSend: function(){
+                    $('.loader').fadeIn();
+                }
+            }) 
+
+            .done(function() {
+                console.log("success");  
+            })
+            .fail(function() {
+                console.log("error");
+            })
+            .always(function(data) {
+                console.log(data);
+                $('.loader').fadeOut();
+                $('.list-product').html(data['listProduits']);   
+                $('.produit-pagination').html(data['pagination']);
+                $('.produit-pagination li').eq(data['index']).find('a').addClass('selected'); 
+            });
+        };
+        AjaxProduct();
+ 
+         
+        // PAGINATION PRODUIT
+        $(document).ajaxStop(function() {
+            $('.produit-pagination li').click(function(e){ 
+                e.preventDefault(); 
+                AjaxProduct($(this).find('a').data('range'), null, $(this).index());
+            });
+              if (!Modernizr.objectfit) {
+                $('.image-fit').each(function(){
+
+                   var src = $(this).children().attr('src');
+                   $(this).css('background-image', 'url(' + src + ')'); 
+                   $(this).children().remove();
+
+                })
+            }
+        });
+         
+        // SEARCH PRODUIT    
+        $('.search-bloc button').click(function(e){
+            e.preventDefault();
+            var search = $('.search-bloc input').val();
+            $('.produit-pagination').html('');
+        
+            if (search.length > 2) {
+                $.ajax({
+                    url: 'ajax/search-realisation',
+                    type: 'POST',
+                    dataType: 'json',
+                    data: {search: search}, 
+                    beforeSend: function(){
+                        $('.loader').fadeIn();
+                    }
+                }) 
+                .done(function() {
+                    console.log("success");  
+                })
+                .fail(function() {
+                    console.log("error");
+                })
+                .always(function(data) {
+                    console.log(data); 
+                    $('.loader').fadeOut();
+                    if (data['searchResults']){
+                        $('.list-product').html(data['searchResults']); 
+                    } else {
+                        $('.list-product').html('<div class="no-results">Désolé, aucun résultat ne correspond à votre recherche ...</div>'); 
+                    }
+                });
+            }
+        });
+
+        $('.search-bloc input').change(function(){
+            var search = $('.search-bloc input').val();
+        
+            if (search.length < 2) {
+                AjaxProduct();
+            }
+        })
+     
+        $('.search-bloc input').keyup(function(event){
+            if(event.keyCode == 13){
+                $('.search-bloc button').click();
+            }
+        });
+    });
+</script>
+
